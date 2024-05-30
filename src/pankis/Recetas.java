@@ -8,12 +8,12 @@ package pankis;
  *
  * @author pedro
  */
-public class Dashboard extends javax.swing.JPanel {
+public class Recetas extends javax.swing.JPanel {
 
     /**
-     * Creates new form dashboardd
+     * Creates new form Inventario
      */
-    public Dashboard() {
+    public Recetas() {
         initComponents();
     }
 
@@ -28,23 +28,23 @@ public class Dashboard extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setText("Dashboard");
+        jLabel1.setText("Recetas");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(500, Short.MAX_VALUE)
+                .addContainerGap(509, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(475, 475, 475))
+                .addGap(509, 509, 509))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(196, 196, 196)
+                .addGap(311, 311, 311)
                 .addComponent(jLabel1)
-                .addContainerGap(508, Short.MAX_VALUE))
+                .addContainerGap(393, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
