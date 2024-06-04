@@ -42,7 +42,20 @@ public class inicio extends javax.swing.JFrame {
      */
     public inicio() {
         initComponents();
+        setSize(1280, 740);
+        setLocationRelativeTo(null);
         timer.start();
+        Dashboard p= new Dashboard();
+       
+       p.setSize(1032, 720);
+       p.setLocation(0, 0);
+       
+       contenido.removeAll();
+       contenido.add(p);
+       contenido.revalidate();
+       contenido.repaint();
+       
+       
     }
 
     /**
@@ -66,6 +79,7 @@ public class inicio extends javax.swing.JFrame {
         contenido = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
@@ -187,7 +201,7 @@ public class inicio extends javax.swing.JFrame {
         );
         contenidoLayout.setVerticalGroup(
             contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 720, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
@@ -294,6 +308,8 @@ public class inicio extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new inicio().setVisible(true);
+              
+                
             }
         });
     }

@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package pankis;
+import conexionSQL.conexionSQL;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 /**
  *
@@ -14,7 +17,24 @@ public class Pankis {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        login l= new login();
+        
+        l.setVisible(true);
+        
+        conexionSQL con=new conexionSQL();
+        Connection connection = con.getConnection();
+
+        if (connection != null) {
+            System.out.println("Conexión exitosa a la base de datos PostgreSQL");
+
+            // Puedes ejecutar consultas u otras operaciones aquí
+            
+            con.cerrarConexion();
+        } else {
+            System.out.println("No se pudo establecer conexión a la base de datos");
+        }
+        
     }
     
 }
