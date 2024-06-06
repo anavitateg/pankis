@@ -7,7 +7,7 @@
  *  Tetap Semangat...!!! Semua orang Bisa Belajar Coding
  *  Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-package pankis;
+package paneles.componentes;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -30,7 +30,7 @@ public class FButton extends JButton {
     private Color line;
 
     private Color fillOriginal;
-    private Color fillOver;
+    Color fillOver;
     private Color fillClick;
     private Color lineOriginal;
     private Color lineOver;
@@ -96,6 +96,7 @@ public class FButton extends JButton {
 
     public void setFillOriginal(Color fillOriginal) {
         this.fillOriginal = fillOriginal;
+        fill = fillOriginal;
     }
 
     public Color getFillOver() {
@@ -138,8 +139,6 @@ public class FButton extends JButton {
         this.strokeWidth = strokeWidth;
     }
 
-    
-    
     @Override
     protected void paintComponent(Graphics g) {
         if (!isOpaque()) {
@@ -148,15 +147,15 @@ public class FButton extends JButton {
             int s = strokeWidth;
             int w = getWidth() - (2 * s);
             int h = getHeight() - (2 * s);
-            //gambar background
+            int arc = 30;  // This value makes the button rounded
+            // Draw background
             g2d.setColor(fill);
-            g2d.fillRoundRect(s, s, w, h, h, h);
-            //gambar border
+            g2d.fillRoundRect(s, s, w, h, arc, arc);
+            // Draw border
             g2d.setStroke(new BasicStroke(s));
             g2d.setColor(line);
-            g2d.drawRoundRect(s, s, w, h, h, h);
+            g2d.drawRoundRect(s, s, w, h, arc, arc);
         }
         super.paintComponent(g);
     }
-
 }

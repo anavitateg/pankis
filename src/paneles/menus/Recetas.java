@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package pankis;
+package paneles.menus;
 
 /**
  *
  * @author pedro
  */
-public class Inventario extends javax.swing.JPanel {
+public class Recetas extends javax.swing.JPanel {
 
     /**
      * Creates new form Inventario
      */
-    public Inventario() {
+    public Recetas() {
         initComponents();
     }
 
@@ -28,14 +28,14 @@ public class Inventario extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setText("Inventario");
+        jLabel1.setText("Recetas");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(496, Short.MAX_VALUE)
+                .addContainerGap(509, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(509, 509, 509))
         );
