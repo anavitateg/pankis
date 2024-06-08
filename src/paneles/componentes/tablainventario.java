@@ -14,9 +14,9 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class TablePanel extends JPanel {
+public class tablainventario extends JPanel {
 
-    public TablePanel() {
+    public tablainventario() {
         initComponents();
     }
 

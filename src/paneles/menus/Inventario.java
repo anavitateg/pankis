@@ -32,44 +32,19 @@ public class Inventario extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        agregarslot = new paneles.componentes.FButton();
-        agregarcategoria = new paneles.componentes.FButton();
-        agregarunidad = new paneles.componentes.FButton();
         raccidente = new paneles.componentes.FButton();
-        jPanel3 = new javax.swing.JPanel();
-        tablePanel1 = new paneles.componentes.TablePanel();
+        boton_buscar = new paneles.componentes.RoundedTextField();
+        jLabel1 = new javax.swing.JLabel();
+        tabla = new paneles.componentes.TablePanel();
+        jButton1 = new javax.swing.JButton();
+        addboton = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+
+        setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-
-        agregarslot.setText("AGREGAR SLOT");
-        agregarslot.setFont(new java.awt.Font("Coda", 0, 14)); // NOI18N
-        agregarslot.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                agregarslotActionPerformed(evt);
-            }
-        });
-
-        agregarcategoria.setText("AGREGAR CATEGORIA");
-        agregarcategoria.setFont(new java.awt.Font("Coda", 0, 14)); // NOI18N
-        agregarcategoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                agregarcategoriaActionPerformed(evt);
-            }
-        });
-
-        agregarunidad.setText("AGREGAR UNIDAD");
-        agregarunidad.setFont(new java.awt.Font("Coda", 0, 14)); // NOI18N
-        agregarunidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                agregarunidadActionPerformed(evt);
-            }
-        });
+        jPanel1.setPreferredSize(new java.awt.Dimension(1032, 720));
+        jPanel1.setLayout(null);
 
         raccidente.setText("REGISTRAR ACCIDENTE");
         raccidente.setFont(new java.awt.Font("Coda", 0, 14)); // NOI18N
@@ -78,126 +53,115 @@ public class Inventario extends javax.swing.JPanel {
                 raccidenteActionPerformed(evt);
             }
         });
+        jPanel1.add(raccidente);
+        raccidente.setBounds(340, 50, 174, 39);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(agregarslot, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(agregarcategoria, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(agregarunidad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(raccidente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(agregarslot, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(agregarcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(agregarunidad, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(raccidente, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        boton_buscar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        boton_buscar.setText("Buscar");
+        boton_buscar.setFont(new java.awt.Font("Coda", 0, 18)); // NOI18N
+        boton_buscar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                boton_buscarFocusLost(evt);
+            }
+        });
+        boton_buscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boton_buscarMouseClicked(evt);
+            }
+        });
+        boton_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_buscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(boton_buscar);
+        boton_buscar.setBounds(770, 50, 210, 36);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 133, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 20, Short.MAX_VALUE)
-        );
+        jLabel1.setFont(new java.awt.Font("Coda", 0, 48)); // NOI18N
+        jLabel1.setText("Inventario");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(40, 50, 215, 36);
+        jPanel1.add(tabla);
+        tabla.setBounds(0, 100, 1030, 186);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(130, 130, 130)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ajustar.png"))); // NOI18N
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ajustar(1).png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(300, 50, 40, 40);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(tablePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(tablePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        addboton.setBackground(new java.awt.Color(255, 255, 255));
+        addboton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/agregar-boton.png"))); // NOI18N
+        addboton.setContentAreaFilled(false);
+        addboton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addboton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/agregar-boton(2).png"))); // NOI18N
+        addboton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addbotonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(addboton);
+        addboton.setBounds(260, 50, 40, 40);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-búsqueda-32.png"))); // NOI18N
+        jButton3.setContentAreaFilled(false);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-búsqueda-32(1).png"))); // NOI18N
+        jPanel1.add(jButton3);
+        jButton3.setBounds(980, 50, 40, 40);
+
+        add(jPanel1);
+        jPanel1.setBounds(0, 0, 1032, 720);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void agregarslotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarslotActionPerformed
-        addslot p= new addslot();
-        p.setVisible(true);
-    }//GEN-LAST:event_agregarslotActionPerformed
-
-    private void agregarcategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarcategoriaActionPerformed
-        addcategoria p= new addcategoria();
-        p.setVisible(true);
-    }//GEN-LAST:event_agregarcategoriaActionPerformed
-
-    private void agregarunidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarunidadActionPerformed
-        addunidad p= new addunidad();
-        p.setVisible(true);
-    }//GEN-LAST:event_agregarunidadActionPerformed
 
     private void raccidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_raccidenteActionPerformed
         addaccidente p= new addaccidente();
         p.setVisible(true);
     }//GEN-LAST:event_raccidenteActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void addbotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbotonActionPerformed
+        addslot p= new addslot();
+        p.setVisible(true);
+    }//GEN-LAST:event_addbotonActionPerformed
+
+    private void boton_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_buscarActionPerformed
+
+    }//GEN-LAST:event_boton_buscarActionPerformed
+
+    private void boton_buscarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_boton_buscarFocusLost
+        if(boton_buscar.getText().isEmpty()){
+        boton_buscar.setText("Buscar");
+        
+        }
+    }//GEN-LAST:event_boton_buscarFocusLost
+
+    private void boton_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseClicked
+              if("Buscar".equals(boton_buscar.getText())){
+            boton_buscar.setText("");
+        }else if (boton_buscar.getText().isEmpty()) {
+    boton_buscar.setText("Buscar");
+}
+    }//GEN-LAST:event_boton_buscarMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private paneles.componentes.FButton agregarcategoria;
-    private paneles.componentes.FButton agregarslot;
-    private paneles.componentes.FButton agregarunidad;
+    private javax.swing.JButton addboton;
+    private paneles.componentes.RoundedTextField boton_buscar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private paneles.componentes.FButton raccidente;
-    private paneles.componentes.TablePanel tablePanel1;
+    private paneles.componentes.TablePanel tabla;
     // End of variables declaration//GEN-END:variables
 }

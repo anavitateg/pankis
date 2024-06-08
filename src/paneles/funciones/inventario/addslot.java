@@ -19,8 +19,9 @@ private conexionSQL conexion;
      */
     public addslot() {
         initComponents();
-        setSize(465, 462);
+        setSize(477, 371);
         setLocationRelativeTo(null);
+        
         
         
         conexion = new conexionSQL();
@@ -28,6 +29,7 @@ private conexionSQL conexion;
         // Obtener categorías y llenar el JComboBox
         List<String> categorias = conexion.obtenerCategorias();
         for (String categoria : categorias) {
+            
             combo_categoria.addItem(categoria);
         }
         
@@ -51,22 +53,22 @@ private conexionSQL conexion;
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        roundedTextField1 = new paneles.componentes.RoundedTextField();
+        proovedor_slot = new paneles.componentes.RoundedTextField();
         jLabel3 = new javax.swing.JLabel();
         combo_unidad = new paneles.componentes.RoundedComboBox();
         combo_categoria = new paneles.componentes.RoundedComboBox();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        roundedTextField2 = new paneles.componentes.RoundedTextField();
-        roundedTextField3 = new paneles.componentes.RoundedTextField();
+        nombre_slot = new paneles.componentes.RoundedTextField();
+        cantidad_slot = new paneles.componentes.RoundedTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        boton_cancelar = new paneles.componentes.FButton();
-        boton_agregar = new paneles.componentes.FButton();
+        fecha_caducidad = new com.toedter.calendar.JDateChooser();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -76,38 +78,33 @@ private conexionSQL conexion;
         jPanel1.setFocusable(false);
         jPanel1.setLayout(null);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botones/cerrar/cerrar.png"))); // NOI18N
-        jButton1.setContentAreaFilled(false);
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botones/cerrar/cerrar2.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(420, 10, 40, 40);
-
         jLabel1.setFont(new java.awt.Font("Coda", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("FECHA CADUCIDAD:");
+        jLabel1.setText("Caducidad:");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(40, 360, 170, 20);
+        jLabel1.setBounds(0, 330, 170, 20);
 
-        jLabel2.setFont(new java.awt.Font("Coda", 0, 24)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("AGREGAR SLOT");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(130, 30, 210, 50);
-
-        roundedTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(roundedTextField1);
-        roundedTextField1.setBounds(180, 290, 230, 40);
+        proovedor_slot.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        proovedor_slot.setText("Origen");
+        proovedor_slot.setFont(new java.awt.Font("Coda", 0, 18)); // NOI18N
+        proovedor_slot.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                proovedor_slotFocusLost(evt);
+            }
+        });
+        proovedor_slot.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                proovedor_slotMouseClicked(evt);
+            }
+        });
+        jPanel1.add(proovedor_slot);
+        proovedor_slot.setBounds(150, 270, 300, 40);
 
         jLabel3.setFont(new java.awt.Font("Coda", 0, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("INGREDIENTE:");
+        jLabel3.setText("Nombre:");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(30, 100, 140, 20);
+        jLabel3.setBounds(10, 80, 140, 20);
 
         combo_unidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,7 +112,7 @@ private conexionSQL conexion;
             }
         });
         jPanel1.add(combo_unidad);
-        combo_unidad.setBounds(180, 190, 230, 40);
+        combo_unidad.setBounds(150, 170, 300, 40);
 
         combo_categoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,60 +120,107 @@ private conexionSQL conexion;
             }
         });
         jPanel1.add(combo_categoria);
-        combo_categoria.setBounds(180, 140, 230, 40);
+        combo_categoria.setBounds(150, 120, 300, 40);
 
         jLabel4.setFont(new java.awt.Font("Coda", 0, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("CATEGORÍA:");
+        jLabel4.setText("Categoría:");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(60, 150, 100, 20);
+        jLabel4.setBounds(30, 130, 90, 20);
 
         jLabel5.setFont(new java.awt.Font("Coda", 0, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("UNIDAD:");
+        jLabel5.setText("Unidad:");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(80, 200, 80, 20);
+        jLabel5.setBounds(40, 180, 90, 20);
 
-        roundedTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(roundedTextField2);
-        roundedTextField2.setBounds(180, 90, 230, 40);
+        nombre_slot.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        nombre_slot.setText("Nombre de ingrediente");
+        nombre_slot.setFont(new java.awt.Font("Coda", 0, 18)); // NOI18N
+        nombre_slot.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nombre_slotFocusLost(evt);
+            }
+        });
+        nombre_slot.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nombre_slotMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                nombre_slotMouseExited(evt);
+            }
+        });
+        jPanel1.add(nombre_slot);
+        nombre_slot.setBounds(150, 70, 300, 40);
 
-        roundedTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(roundedTextField3);
-        roundedTextField3.setBounds(180, 240, 230, 40);
+        cantidad_slot.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cantidad_slot.setText("Cantidad de unidad");
+        cantidad_slot.setFont(new java.awt.Font("Coda", 0, 18)); // NOI18N
+        cantidad_slot.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cantidad_slotFocusLost(evt);
+            }
+        });
+        cantidad_slot.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cantidad_slotMouseClicked(evt);
+            }
+        });
+        cantidad_slot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cantidad_slotActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cantidad_slot);
+        cantidad_slot.setBounds(150, 220, 300, 40);
 
         jLabel6.setFont(new java.awt.Font("Coda", 0, 18)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("CANTIDAD:");
+        jLabel6.setText("Cantidad:");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(60, 250, 100, 20);
+        jLabel6.setBounds(30, 230, 100, 20);
 
         jLabel7.setFont(new java.awt.Font("Coda", 0, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("PROOVEDOR:");
+        jLabel7.setText("Proovedor:");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(40, 300, 120, 20);
-        jPanel1.add(jDateChooser1);
-        jDateChooser1.setBounds(220, 350, 190, 30);
+        jLabel7.setBounds(20, 280, 120, 20);
 
-        boton_cancelar.setText("CANCELAR");
-        boton_cancelar.setFillClick(new java.awt.Color(0, 0, 0));
-        boton_cancelar.setFillOriginal(new java.awt.Color(204, 0, 0));
-        boton_cancelar.setFillOver(new java.awt.Color(0, 0, 0));
-        boton_cancelar.addActionListener(new java.awt.event.ActionListener() {
+        fecha_caducidad.setFont(new java.awt.Font("Coda", 0, 18)); // NOI18N
+        jPanel1.add(fecha_caducidad);
+        fecha_caducidad.setBounds(160, 320, 290, 30);
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setLayout(null);
+
+        jLabel2.setFont(new java.awt.Font("Coda", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("AGREGAR SLOT");
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(0, 0, 210, 50);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-cancelar-32(1).png"))); // NOI18N
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-cancelar-32_1.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_cancelarActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_cancelar);
-        boton_cancelar.setBounds(100, 400, 110, 40);
+        jPanel2.add(jButton1);
+        jButton1.setBounds(420, 10, 40, 30);
 
-        boton_agregar.setText("AGREGAR");
-        boton_agregar.setFillClick(new java.awt.Color(0, 0, 0));
-        boton_agregar.setFillOriginal(new java.awt.Color(0, 153, 0));
-        boton_agregar.setFillOver(new java.awt.Color(0, 0, 0));
-        jPanel1.add(boton_agregar);
-        boton_agregar.setBounds(230, 400, 110, 40);
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-añadir-32.png"))); // NOI18N
+        jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-añadir-32(2).png"))); // NOI18N
+        jPanel2.add(jButton2);
+        jButton2.setBounds(390, 0, 32, 50);
+
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(0, 0, 480, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -186,7 +230,7 @@ private conexionSQL conexion;
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -196,10 +240,6 @@ private conexionSQL conexion;
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void boton_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_cancelarActionPerformed
-       dispose();
-    }//GEN-LAST:event_boton_cancelarActionPerformed
-
     private void combo_categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_categoriaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_combo_categoriaActionPerformed
@@ -207,6 +247,60 @@ private conexionSQL conexion;
     private void combo_unidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_unidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_combo_unidadActionPerformed
+
+    private void cantidad_slotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidad_slotActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cantidad_slotActionPerformed
+
+    private void nombre_slotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombre_slotMouseClicked
+        
+        if("Nombre de ingrediente".equals(nombre_slot.getText())){
+            nombre_slot.setText("");
+        }else if (nombre_slot.getText().isEmpty()) {
+    nombre_slot.setText("Nombre de ingrediente");
+}
+    }//GEN-LAST:event_nombre_slotMouseClicked
+
+    private void nombre_slotMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombre_slotMouseExited
+        
+    }//GEN-LAST:event_nombre_slotMouseExited
+
+    private void nombre_slotFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombre_slotFocusLost
+        if(nombre_slot.getText().isEmpty()){
+        nombre_slot.setText("Nombre de ingrediente");
+        
+        }
+    }//GEN-LAST:event_nombre_slotFocusLost
+
+    private void cantidad_slotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cantidad_slotMouseClicked
+        if("Cantidad de unidad".equals(cantidad_slot.getText())){
+            cantidad_slot.setText("");
+        }else if (cantidad_slot.getText().isEmpty()) {
+    cantidad_slot.setText("Cantidad de unidad");
+}
+    }//GEN-LAST:event_cantidad_slotMouseClicked
+
+    private void cantidad_slotFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cantidad_slotFocusLost
+        if(cantidad_slot.getText().isEmpty()){
+        cantidad_slot.setText("Cantidad de unidad");
+        
+        }
+    }//GEN-LAST:event_cantidad_slotFocusLost
+
+    private void proovedor_slotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_proovedor_slotMouseClicked
+        if("Origen".equals(proovedor_slot.getText())){
+            proovedor_slot.setText("");
+        }else if (proovedor_slot.getText().isEmpty()) {
+    proovedor_slot.setText("Origen");
+}
+    }//GEN-LAST:event_proovedor_slotMouseClicked
+
+    private void proovedor_slotFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_proovedor_slotFocusLost
+          if(proovedor_slot.getText().isEmpty()){
+        proovedor_slot.setText("Origen");
+        
+        }
+    }//GEN-LAST:event_proovedor_slotFocusLost
 
     /**
      * @param args the command line arguments
@@ -245,12 +339,12 @@ private conexionSQL conexion;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private paneles.componentes.FButton boton_agregar;
-    private paneles.componentes.FButton boton_cancelar;
+    private paneles.componentes.RoundedTextField cantidad_slot;
     private paneles.componentes.RoundedComboBox combo_categoria;
     private paneles.componentes.RoundedComboBox combo_unidad;
+    private com.toedter.calendar.JDateChooser fecha_caducidad;
     private javax.swing.JButton jButton1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -259,8 +353,8 @@ private conexionSQL conexion;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private paneles.componentes.RoundedTextField roundedTextField1;
-    private paneles.componentes.RoundedTextField roundedTextField2;
-    private paneles.componentes.RoundedTextField roundedTextField3;
+    private javax.swing.JPanel jPanel2;
+    private paneles.componentes.RoundedTextField nombre_slot;
+    private paneles.componentes.RoundedTextField proovedor_slot;
     // End of variables declaration//GEN-END:variables
 }

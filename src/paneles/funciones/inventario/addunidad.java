@@ -36,7 +36,6 @@ public class addunidad extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         prefijo_unidad = new paneles.componentes.RoundedTextField();
-        boton_cancelar = new paneles.componentes.FButton();
         boton_agregar = new paneles.componentes.FButton();
         jLabel4 = new javax.swing.JLabel();
         nombre_unidad = new paneles.componentes.RoundedTextField();
@@ -73,20 +72,9 @@ public class addunidad extends javax.swing.JFrame {
         jLabel3.setBounds(60, 150, 90, 20);
 
         prefijo_unidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        prefijo_unidad.setFont(new java.awt.Font("Coda", 0, 18)); // NOI18N
         jPanel1.add(prefijo_unidad);
         prefijo_unidad.setBounds(160, 140, 230, 40);
-
-        boton_cancelar.setText("CANCELAR");
-        boton_cancelar.setFillClick(new java.awt.Color(0, 0, 0));
-        boton_cancelar.setFillOriginal(new java.awt.Color(204, 0, 0));
-        boton_cancelar.setFillOver(new java.awt.Color(0, 0, 0));
-        boton_cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_cancelarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(boton_cancelar);
-        boton_cancelar.setBounds(110, 200, 110, 40);
 
         boton_agregar.setText("AGREGAR");
         boton_agregar.setFillClick(new java.awt.Color(0, 0, 0));
@@ -98,7 +86,7 @@ public class addunidad extends javax.swing.JFrame {
             }
         });
         jPanel1.add(boton_agregar);
-        boton_agregar.setBounds(230, 200, 110, 40);
+        boton_agregar.setBounds(190, 200, 110, 40);
 
         jLabel4.setFont(new java.awt.Font("Coda", 0, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -107,6 +95,7 @@ public class addunidad extends javax.swing.JFrame {
         jLabel4.setBounds(30, 100, 140, 20);
 
         nombre_unidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        nombre_unidad.setFont(new java.awt.Font("Coda", 0, 18)); // NOI18N
         jPanel1.add(nombre_unidad);
         nombre_unidad.setBounds(160, 90, 230, 40);
 
@@ -124,10 +113,6 @@ public class addunidad extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void boton_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_cancelarActionPerformed
-        dispose();
-    }//GEN-LAST:event_boton_cancelarActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -141,8 +126,7 @@ public class addunidad extends javax.swing.JFrame {
                     boolean exito = conexion.agregarUnidad(nombreUnidad, prefijoUnidad);
                     if (exito) {
                         JOptionPane.showMessageDialog(null, "Unidad agregada con éxito.");
-                        nombre_unidad.setText("");
-                        prefijo_unidad.setText("");
+                        dispose();
                     } else {
                         JOptionPane.showMessageDialog(null, "Error al agregar la unidad.");
                     }
@@ -195,7 +179,6 @@ public class addunidad extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private paneles.componentes.FButton boton_agregar;
-    private paneles.componentes.FButton boton_cancelar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

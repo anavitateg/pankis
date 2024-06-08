@@ -46,7 +46,7 @@ public class inicio extends javax.swing.JFrame {
      */
     public inicio() {
         initComponents();
-        setSize(1280, 740);
+        setSize(1280, 720);
         setLocationRelativeTo(null);
         timer.start();
         Dashboard p= new Dashboard();
@@ -80,9 +80,11 @@ public class inicio extends javax.swing.JFrame {
         boton_inventario = new javax.swing.JButton();
         boton_ventas = new javax.swing.JButton();
         boton_recetas = new javax.swing.JButton();
+        fButton1 = new paneles.componentes.FButton();
         contenido = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
@@ -155,6 +157,13 @@ public class inicio extends javax.swing.JFrame {
             }
         });
 
+        fButton1.setText("Salir");
+        fButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -167,19 +176,23 @@ public class inicio extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(66, 66, 66))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(fecha)
                         .addGap(53, 53, 53))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(hora)
-                        .addGap(95, 95, 95))))
+                        .addGap(95, 95, 95))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(fButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(66, 66, 66))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(55, 55, 55)
+                .addContainerGap()
+                .addComponent(fButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(27, 27, 27)
                 .addComponent(boton_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -276,6 +289,10 @@ public class inicio extends javax.swing.JFrame {
        contenido.revalidate();
        contenido.repaint();
     }//GEN-LAST:event_boton_recetasMouseClicked
+
+    private void fButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fButton1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_fButton1ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -324,6 +341,7 @@ public class inicio extends javax.swing.JFrame {
     private javax.swing.JButton boton_recetas;
     private javax.swing.JButton boton_ventas;
     private javax.swing.JPanel contenido;
+    private paneles.componentes.FButton fButton1;
     private javax.swing.JLabel fecha;
     private javax.swing.JLabel hora;
     private javax.swing.JLabel jLabel1;

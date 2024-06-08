@@ -1,0 +1,24 @@
+INSERT INTO inventario (nombre_slot, categoria_slot, medida_slot, cantidad_slot, proovedor_slot, fecha_caducidad, fecha_agregado) VALUES ('a', 'a','a',10,'a','12-02-2000','12-03-2000');
+
+Crear un slot
+
+Inventario
+movimiento_crearnuevo
+movimientos
+
+Modificar un slot
+Inventario
+movimiento_modificar
+movimientos
+
+Eliminar un slot
+
+Inventario
+movimiento_eliminar
+movimientos
+
+Registrar accidente
+
+Inventario
+movimiento_accidente
+movimientos

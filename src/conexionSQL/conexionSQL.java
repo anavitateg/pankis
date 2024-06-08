@@ -8,6 +8,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +19,11 @@ public class conexionSQL {
     private static final String CONTRASENA = "12345"; // Cambia por tu contraseña
     
     private Connection connection;
+    
+    
+     LocalDateTime fecha = LocalDateTime.now();
+        DateTimeFormatter formateador = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String fechaactual = fecha.format(formateador);
 
     public conexionSQL() {
         try {
@@ -61,6 +68,7 @@ public class conexionSQL {
             stmt.setString(1, nombreCategoria);
             int filasInsertadas = stmt.executeUpdate();
             return filasInsertadas > 0; // Si se insertó al menos una fila, la operación fue exitosa
+            
         } catch (SQLException e) {
             System.out.println("Error al agregar categoría: " + e.getMessage());
             return false;
@@ -82,12 +90,33 @@ public class conexionSQL {
         }
     }
      
-    public boolean registrarAccidente(String nombreUnidad, String prefijoUnidad) {
+     public boolean agregarSlot(String nombre_slot, String categoria_slot, String unidad_slot, int cantidad_slot, String proovedor_slot, LocalDateTime fecha_caducidad, LocalDateTime fecha_creacion ) {
+        String consulta = "INSERT INTO inventario (nombre_slot, categoria_slot, medida_slot, cantidad_slot, proovedor_slot, fecha_caducidad, fecha_agregado) VALUES (?, ?)";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(consulta);
+            stmt.setString(1, nombre_slot);
+            stmt.setString(2, categoria_slot);
+            stmt.setString(3, unidad_slot);
+            stmt.setString(4, Integer.toString(cantidad_slot));
+            stmt.setString(5, proovedor_slot);
+            stmt.setString(6, fecha_caducidad.format(formateador));
+            stmt.setString(7, fechaactual);
+            
+            int filasInsertadas = stmt.executeUpdate();
+            return filasInsertadas > 0; // Si se insertó al menos una fila, la operación fue exitosa
+        } catch (SQLException e) {
+            System.out.println("Error al agregar unidad: " + e.getMessage());
+            return false;
+        }
+    }
+     
+    public boolean agregarMovimiento(int tipo, int idtipo, LocalDateTime fecha_movimiento, int slot_afectado) {
         String consulta = "INSERT INTO unidades (nombre_unidad, prefijo_unidad) VALUES (?, ?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(consulta);
-            stmt.setString(1, nombreUnidad);
-            stmt.setString(2, prefijoUnidad);
+            stmt.setString(1, Integer.toString(tipo));
+            stmt.setString(2, Integer.toString(idtipo));
+            stmt.setString(3, fechaactual);
             int filasInsertadas = stmt.executeUpdate();
             return filasInsertadas > 0; // Si se insertó al menos una fila, la operación fue exitosa
         } catch (SQLException e) {

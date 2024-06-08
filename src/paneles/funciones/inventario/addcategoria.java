@@ -37,7 +37,6 @@ public class addcategoria extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         nombre_categoria = new paneles.componentes.RoundedTextField();
-        boton_cancelar = new paneles.componentes.FButton();
         boton_agregar = new paneles.componentes.FButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -72,20 +71,9 @@ public class addcategoria extends javax.swing.JFrame {
         jLabel3.setBounds(30, 100, 140, 20);
 
         nombre_categoria.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        nombre_categoria.setFont(new java.awt.Font("Coda", 0, 18)); // NOI18N
         jPanel1.add(nombre_categoria);
         nombre_categoria.setBounds(160, 90, 230, 40);
-
-        boton_cancelar.setText("CANCELAR");
-        boton_cancelar.setFillClick(new java.awt.Color(0, 0, 0));
-        boton_cancelar.setFillOriginal(new java.awt.Color(204, 0, 0));
-        boton_cancelar.setFillOver(new java.awt.Color(0, 0, 0));
-        boton_cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_cancelarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(boton_cancelar);
-        boton_cancelar.setBounds(100, 150, 110, 40);
 
         boton_agregar.setText("AGREGAR");
         boton_agregar.setFillClick(new java.awt.Color(0, 0, 0));
@@ -97,7 +85,7 @@ public class addcategoria extends javax.swing.JFrame {
             }
         });
         jPanel1.add(boton_agregar);
-        boton_agregar.setBounds(230, 150, 110, 40);
+        boton_agregar.setBounds(190, 140, 110, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,10 +103,6 @@ public class addcategoria extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void boton_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_cancelarActionPerformed
-        dispose();
-    }//GEN-LAST:event_boton_cancelarActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -131,7 +115,7 @@ public class addcategoria extends javax.swing.JFrame {
                     boolean exito = conexion.agregarCategoria(nombreCategoria);
                     if (exito) {
                         JOptionPane.showMessageDialog(null, "Categoría agregada con éxito.");
-                        nombre_categoria.setText("");
+                        dispose();
                     } else {
                         JOptionPane.showMessageDialog(null, "Error al agregar la categoría.");
                     }
@@ -181,7 +165,6 @@ public class addcategoria extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private paneles.componentes.FButton boton_agregar;
-    private paneles.componentes.FButton boton_cancelar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
